@@ -2,8 +2,8 @@ import React from "react";
 import { Alert, Button, Table } from 'react-bootstrap';
 import AddPlayerComponent from "./AddPlayerComponent";
 
-
 class PlayerComponents extends React.Component {
+
 
     constructor(props: any) {
         super(props);
@@ -76,61 +76,69 @@ class PlayerComponents extends React.Component {
 
     render() {
         //let isEmptyObject = Object.keys(this.state.editPlayer).length === 0;
+        const cssStyle = {
+            width: "980px",
+            display: "inline-block",
+            padding: "2em"
+        };
+
         return (
             <>
-                <AddPlayerComponent Player={this.AddPlayer}></AddPlayerComponent>
-                {
-                    this.state.players.length == 0 ? <Alert variant="info">No data found</Alert> :
-                        <div className="player-list">
-                            <Table striped bordered hover>
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Player Name</th>
-                                        <th>Number</th>
-                                        <th>Action More</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        this.state.players.map((item: any, index: number) => {
-                                            return (
-                                                <tr key={index}>
-                                                    <td>{index + 1}</td>
-                                                    <td>
-                                                        {
-                                                            (this.state.editPlayer.id == item.id) ?
-                                                                <input type="text" value={this.state.editPlayer.name}
-                                                                    onChange={(event) => this.EditPlayerOnChange(event)} /> :
-                                                                <span>{item.name}</span>
-                                                        }
-                                                    </td>
-                                                    <td>
-                                                        {
-                                                            (this.state.editPlayer.id == item.id) ?
-                                                                <input type="text" value={this.state.editPlayer.number}
-                                                                    onChange={(event) => this.EditNumberOnChange(event)} /> :
-                                                                <span>{item.number}</span>
-                                                        }
-                                                    </td>
-                                                    <td>
-                                                        {
-                                                            (this.state.editPlayer.id == item.id) ?
-                                                                <Button type="button" variant="primary" onClick={() => this.SavePlayer()}>Save</Button> :
-                                                                <Button type="button" variant="outline-primary" onClick={() => this.EditPlayer(item)}>Edit</Button>
-                                                        }
-                                                        {this.space}
-                                                        <Button type="button" variant="outline-danger" onClick={() => this.RemovePlayer(item)}>Delete</Button>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                            </Table>
-                        </div>
+                <div className="player-list" style={cssStyle}>
+                    <AddPlayerComponent Player={this.AddPlayer}></AddPlayerComponent>
+                    {
+                        this.state.players.length == 0 ? <Alert variant="info">No data found</Alert> :
+                            <div className="player-list">
+                                <Table striped bordered hover>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Player Name</th>
+                                            <th>Number</th>
+                                            <th>Action More</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            this.state.players.map((item: any, index: number) => {
+                                                return (
+                                                    <tr key={index}>
+                                                        <td>{index + 1}</td>
+                                                        <td>
+                                                            {
+                                                                (this.state.editPlayer.id == item.id) ?
+                                                                    <input type="text" value={this.state.editPlayer.name}
+                                                                        onChange={(event) => this.EditPlayerOnChange(event)} /> :
+                                                                    <span>{item.name}</span>
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            {
+                                                                (this.state.editPlayer.id == item.id) ?
+                                                                    <input type="text" value={this.state.editPlayer.number}
+                                                                        onChange={(event) => this.EditNumberOnChange(event)} /> :
+                                                                    <span>{item.number}</span>
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            {
+                                                                (this.state.editPlayer.id == item.id) ?
+                                                                    <Button type="button" variant="primary" onClick={() => this.SavePlayer()}>Save</Button> :
+                                                                    <Button type="button" variant="outline-primary" onClick={() => this.EditPlayer(item)}>Edit</Button>
+                                                            }
+                                                            {this.space}
+                                                            <Button type="button" variant="outline-danger" onClick={() => this.RemovePlayer(item)}>Delete</Button>
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            })
+                                        }
+                                    </tbody>
+                                </Table>
+                            </div>
 
-                }
+                    }
+                </div>
 
             </>
         );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, Form, InputGroup } from "react-bootstrap";
+import { Form, InputGroup } from "react-bootstrap";
 
 interface MyProps {
     Player: any

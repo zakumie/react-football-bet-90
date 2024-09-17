@@ -3,17 +3,26 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "proxy": "https://localhost:7150",
   "scripts": {
+    "start": "react-scripts start --proxy-setup ./src/setupProxy.js",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.7",
+    "axios": "^1.7.5",
     "bootstrap": "^5.3.3",
+    "http-proxy-middleware": "^3.0.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.1.2",
+    "react-router": "^6.26.1",
+    "react-router-dom": "^6.26.1",
+    "redux": "^5.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
